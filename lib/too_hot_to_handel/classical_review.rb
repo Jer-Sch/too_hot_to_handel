@@ -3,9 +3,10 @@ class TooHotToHandel::ClassicalReview
 
   @@all = []
 
-  def initialize(title, url)
+  def initialize(title, url, description)
     @title = title
     @url = url
+    @description = description
     @@all << self
   end
 

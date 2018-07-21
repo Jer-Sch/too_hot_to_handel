@@ -10,17 +10,17 @@ class TooHotToHandel::Scraper
       title = review.css(".css-p4c7a9").text
       description = review.css(".css-1up1n27").text
       url = "https://nytimes.com" + review.css(".css-1xc9qte a").attr("href")
-      TooHotToHandel::ClassicalReview.new(title, url)
-
+      TooHotToHandel::ClassicalReview.new(title, url, description)
+      # binding.pry
     end
   end
 
-  def self.scrape_review_content(classical_review)
-    url = classical_review.url
-    doc = Nokogiri::HTML(open(url))
-    
-
-  end
+  # def self.scrape_review_content(classical_review)
+  #   url = classical_review.url
+  #   doc = Nokogiri::HTML(open(url))
+  #
+  #
+  # end
 
 
 
