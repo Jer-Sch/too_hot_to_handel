@@ -4,13 +4,13 @@ class TooHotToHandel::CLI
       line_width = 105
       puts ("------------------------------------------------------".center(line_width))
       puts ""
-      puts "#######                  #     #                 #######           #     #                              "
-      puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #"
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #"
-      puts "   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #"
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #"
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #"
-      puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######"
+      puts "#######                  #     #                 #######           #     #                              ".blue
+      puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #".blue
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #".blue
+      puts "   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #".blue
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #".blue
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #".blue
+      puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######".blue
       puts ""
       puts ("Bringing classical music reviews right to your command line!".center(line_width))
 
@@ -23,13 +23,13 @@ class TooHotToHandel::CLI
     while user_input != "exit"
       line_width = 105
       puts ""
-      puts "To view the latest classical music reviews in your command line, type 'show me'"
+      puts ("To view the latest classical music reviews in your command line, type 'show me'.".center(line_width))
       puts ""
-      puts "To enable browser mode and view the reviews in your web browser, type 'show me on the web'"
+      puts ("To enable browser mode and view the reviews in your web browser, type 'show me on the web'.".center(line_width))
       puts ""
-      puts "To quit at any time, type 'exit'."
+      puts ("To quit at any time, type 'exit'.".center(line_width))
       puts ""
-      puts "Are you ready?"
+      puts ("Are you ready?".center(line_width))
       puts ""
 
       user_input = gets.strip.downcase
@@ -39,6 +39,8 @@ class TooHotToHandel::CLI
         list_reviews
       when "show me on the web"
         list_reviews_in_browser
+      when "exit"
+        puts "It has been a pleasure. Please come back again!"
       else
         puts ""
         puts "I didn't understand that. Please try again."
@@ -49,14 +51,15 @@ class TooHotToHandel::CLI
   def list_reviews
     TooHotToHandel::Scraper.scrape_classical_reviews
 
+    line_width = 105
     puts ""
-    puts "Select a review you would like to read:"
+    puts ("Select a review you would like to read:".center(line_width))
     puts ""
 
     reviews = TooHotToHandel::ClassicalReview.all
 
     reviews.each.with_index(1) do |review, index|
-      puts "#{index} - #{review.title}"
+      puts "#{index} - #{review.title.blue}"
       puts ""
       puts "#{review.description}"
       puts ""
@@ -68,14 +71,15 @@ class TooHotToHandel::CLI
   def list_reviews_in_browser
     TooHotToHandel::Scraper.scrape_classical_reviews
 
+    line_width = 105
     puts ""
-    puts "Select a review you would like to read:"
+    puts ("Select a review you would like to read:".center(line_width))
     puts ""
 
     reviews = TooHotToHandel::ClassicalReview.all
 
     reviews.each.with_index(1) do |review, index|
-      puts "#{index} - #{review.title}"
+      puts "#{index} - #{review.title.red}"
       puts ""
       puts "#{review.description}"
       puts ""
@@ -93,7 +97,8 @@ class TooHotToHandel::CLI
     TooHotToHandel::Scraper.scrape_review_content(classical_review)
 
     puts classical_review.content
-    puts "------------------------------------------------------"
+    line_width = 105
+    puts ("------------------------------------------------------".center(line_width))
 
 
     end
