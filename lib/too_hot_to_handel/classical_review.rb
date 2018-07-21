@@ -1,11 +1,11 @@
 class TooHotToHandel::ClassicalReview
-  attr_accessor :title, :url, :date, :author, :description
+  attr_accessor :title, :url, :description
 
   @@all = []
 
   def initialize(title, url)
     @title = title
-    @url - url
+    @url = url
     @@all << self
   end
 
