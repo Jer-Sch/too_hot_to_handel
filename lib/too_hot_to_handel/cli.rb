@@ -42,7 +42,7 @@ class TooHotToHandel::CLI
     user_input = ""
 
     while user_input != "exit"
-      puts "Hello! This is Too Hot to Handel! Bringing classical music reviews right to your command line!"
+      puts "This is Too Hot to Handel! Bringing classical music reviews right to your command line!"
       puts ""
       puts "To view the latest classical music reviews, type 'show me'"
       puts ""
@@ -53,6 +53,7 @@ class TooHotToHandel::CLI
       puts "To quit at any time, type 'exit'."
       puts ""
       puts "Are you ready?"
+      puts ""
 
       user_input = gets.strip
 
@@ -66,6 +67,8 @@ class TooHotToHandel::CLI
   end
 
   def list_reviews
+    TooHotToHandel::Scraper.scrape_classical_reviews
+
     puts "Select a review you would like to read:"
     puts ""
 
@@ -76,8 +79,8 @@ class TooHotToHandel::CLI
       puts ""
       puts "#{review.description}"
       puts ""
-
     end
+    view_content
   end
 
   def view_content
