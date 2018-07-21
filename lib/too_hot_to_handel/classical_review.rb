@@ -1,5 +1,5 @@
 class TooHotToHandel::ClassicalReview
-  attr_accessor :title, :url, :description
+  attr_accessor :title, :url, :content, :description
 
   @@all = []
 

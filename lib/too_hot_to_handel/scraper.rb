@@ -18,6 +18,7 @@ class TooHotToHandel::Scraper
   def self.scrape_review_content(classical_review)
     url = classical_review.url
     doc = Nokogiri::HTML(open(url))
+    
 
   end
 
