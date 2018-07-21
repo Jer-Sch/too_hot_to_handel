@@ -16,7 +16,10 @@ class TooHotToHandel::CLI
     reviews = TooHotToHandel::ClassicalReview.all
 
     reviews.each.with_index(1) do |review, index|
-      puts "#{index} - #{review.title}. #{review.description}"
+      puts "#{index} - #{review.title}"
+      puts ""
+      puts "#{review.description}"
+      puts ""
     end
 
     input = gets.strip
@@ -24,7 +27,13 @@ class TooHotToHandel::CLI
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
 
-    TooHotToHandel::Scraper.scrape_review_content
+    TooHotToHandel::Scraper.scrape_review_content(classical_review)
+
+    puts classical_review.content
+
+    puts "Please select another review to read:"
+
+    
 
   end
 end

@@ -15,12 +15,14 @@ class TooHotToHandel::Scraper
     end
   end
 
-  # def self.scrape_review_content(classical_review)
-  #   url = classical_review.url
-  #   doc = Nokogiri::HTML(open(url))
-  #
-  #
-  # end
+  def self.scrape_review_content(classical_review)
+    url = classical_review.url
+    doc = Nokogiri::HTML(open(url))
+
+    classical_review.content = doc.css(".StoryBodyCompanionColumn").text
+
+
+  end
 
 
 
@@ -34,3 +36,4 @@ end
 #title: doc.css(".css-p4c7a9").text
 #description: doc.css(".css-1up1n27").text
 #url: doc.css(".css-1xc9qte a").attr("href")
+#content: doc.css(".StoryBodyCompanionColumn").text
