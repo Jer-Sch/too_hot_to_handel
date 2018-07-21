@@ -1,10 +1,11 @@
 class TooHotToHandel::CLI
 
-  def call
-    user_input = ""
-
+  def initialize
       puts "------------------------------------------------------"
       puts "This is Too Hot to Handel! Bringing classical music reviews right to your command line!"
+
+  def call
+    user_input = ""
 
     while user_input != "exit"
       puts ""
@@ -20,6 +21,8 @@ class TooHotToHandel::CLI
       case user_input
       when "show me"
         list_reviews
+      when "web"
+        Launchy.open("https://www.nytimes.com/spotlight/classical-music-reviews")
       else
         puts ""
         puts "I didn't understand that. Please try again."
@@ -56,5 +59,6 @@ class TooHotToHandel::CLI
 
     puts classical_review.content
     puts "------------------------------------------------------"
+    end
   end
 end
