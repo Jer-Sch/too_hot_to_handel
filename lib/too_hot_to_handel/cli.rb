@@ -1,8 +1,9 @@
 class TooHotToHandel::CLI
 
   def initialize
-      puts "------------------------------------------------------"
-
+      line_width = 105
+      puts ("------------------------------------------------------".center(line_width))
+      puts ""
       puts "#######                  #     #                 #######           #     #                              "
       puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #"
       puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #"
@@ -11,7 +12,7 @@ class TooHotToHandel::CLI
       puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #"
       puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######"
       puts ""
-      puts "Bringing classical music reviews right to your command line!"
+      puts ("Bringing classical music reviews right to your command line!".center(line_width))
 
 
   end
@@ -20,6 +21,7 @@ class TooHotToHandel::CLI
     user_input = ""
 
     while user_input != "exit"
+      line_width = 105
       puts ""
       puts "To view the latest classical music reviews in your command line, type 'show me'"
       puts ""
