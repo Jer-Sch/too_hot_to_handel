@@ -23,7 +23,7 @@ class TooHotToHandel::CLI
       case user_input
       when "show me"
         list_reviews
-      when "show me on the web"
+      when "(1..10) web"
         view_content_in_browser
       else
         puts ""
@@ -47,22 +47,24 @@ class TooHotToHandel::CLI
       puts "#{review.description}"
       puts ""
     end
-    view_content_in_browser
+    view_content
     TooHotToHandel::ClassicalReview.destroy_all
   end
 
-  # def view_content
-  #   input = gets.strip
-  #   index = input.to_i-1
-  #
-  #   classical_review = TooHotToHandel::ClassicalReview.all[index]
-  #
-  #   TooHotToHandel::Scraper.scrape_review_content(classical_review)
-  #
-  #   puts classical_review.content
-  #   puts "------------------------------------------------------"
-  #   end
-  # end
+  def view_content
+    input = gets.strip
+    index = input.to_i-1
+
+    classical_review = TooHotToHandel::ClassicalReview.all[index]
+
+    TooHotToHandel::Scraper.scrape_review_content(classical_review)
+
+    puts classical_review.content
+    puts "------------------------------------------------------"
+
+
+    end
+  end
 
   def view_content_in_browser
     input = gets.strip
@@ -72,5 +74,4 @@ class TooHotToHandel::CLI
     TooHotToHandel::Scraper.scrape_review_content(classical_review)
     Launchy.open("#{classical_review.url}")
   end
-end
 end
