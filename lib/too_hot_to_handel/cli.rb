@@ -15,13 +15,14 @@ class TooHotToHandel::CLI
       puts "Are you ready?"
       puts ""
 
-      user_input = gets.strip
+      user_input = gets.strip.downcase
 
       case user_input
       when "show me"
         list_reviews
-      when "more"
-        list_reviews
+      else
+        puts ""
+        puts "I didn't understand that. Please try again."
       end
     end
   end
