@@ -3,6 +3,7 @@ class TooHotToHandel::CLI
   def initialize
       puts "------------------------------------------------------"
       puts "This is Too Hot to Handel! Bringing classical music reviews right to your command line!"
+  end
 
   def call
     user_input = ""
@@ -11,7 +12,7 @@ class TooHotToHandel::CLI
       puts ""
       puts "To view the latest classical music reviews in your command line, type 'show me'"
       puts ""
-      puts "To view the reviews in your browser, type 'show me on the web'"
+      puts "To enable browser mode and view the reviews in your web browser, type 'show me on the web'"
       puts ""
       puts "To quit at any time, type 'exit'."
       puts ""
@@ -23,8 +24,8 @@ class TooHotToHandel::CLI
       case user_input
       when "show me"
         list_reviews
-      when "(1..10) web"
-        view_content_in_browser
+      when "show me on the web"
+        list_reviews_in_browser
       else
         puts ""
         puts "I didn't understand that. Please try again."
@@ -51,6 +52,25 @@ class TooHotToHandel::CLI
     TooHotToHandel::ClassicalReview.destroy_all
   end
 
+  def list_reviews_in_browser
+    TooHotToHandel::Scraper.scrape_classical_reviews
+
+    puts ""
+    puts "Select a review you would like to read:"
+    puts ""
+
+    reviews = TooHotToHandel::ClassicalReview.all
+
+    reviews.each.with_index(1) do |review, index|
+      puts "#{index} - #{review.title}"
+      puts ""
+      puts "#{review.description}"
+      puts ""
+    end
+    view_content_in_browser
+    TooHotToHandel::ClassicalReview.destroy_all
+  end
+
   def view_content
     input = gets.strip
     index = input.to_i-1
@@ -67,6 +87,7 @@ class TooHotToHandel::CLI
   end
 
   def view_content_in_browser
+
     input = gets.strip
     index = input.to_i-1
 
