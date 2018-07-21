@@ -2,4 +2,4 @@
 
 require_relative "../lib/too_hot_to_handel"
 
-CLI.new.call
+TooHotToHandel::CLI.new.call

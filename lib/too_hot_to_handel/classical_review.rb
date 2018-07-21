@@ -1,4 +1,4 @@
-class ClassicalReview
+class TooHotToHandel::ClassicalReview
   attr_accessor :title, :url, :date, :author, :description
 
   @@all = []
