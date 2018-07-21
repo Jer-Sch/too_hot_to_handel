@@ -2,7 +2,18 @@ class TooHotToHandel::CLI
 
   def initialize
       puts "------------------------------------------------------"
-      puts "This is Too Hot to Handel! Bringing classical music reviews right to your command line!"
+
+      puts "#######                  #     #                 #######           #     #                              "
+      puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #"
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #"
+      puts "   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #"
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #"
+      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #"
+      puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######"
+      puts ""
+      puts "Bringing classical music reviews right to your command line!"
+
+
   end
 
   def call
@@ -95,4 +106,3 @@ class TooHotToHandel::CLI
     TooHotToHandel::Scraper.scrape_review_content(classical_review)
     Launchy.open("#{classical_review.url}")
   end
-end
