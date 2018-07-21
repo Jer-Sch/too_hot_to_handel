@@ -1,5 +1,10 @@
-require "too_hot_to_handel/version"
+
 
 module TooHotToHandel
-  # Your code goes here...
 end
+
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
+require_relative "./too_hot_to_handel/version"
