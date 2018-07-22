@@ -1,8 +1,6 @@
 # TooHotToHandel
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/too_hot_to_handel`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+TooHotToHandel is a gem that scrapes the New York Times for the latest classical music news and reviews. It allows you to read articles directly on the command line, or, if you prefer, it will open the article in your web browser. TooHotToHandel is essential for any tech-savvy classical music lover!
 
 ## Installation
 
@@ -22,13 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Run ./bin/too_hot_to_handel
+2. Follow the prompts to select command line mode, or browser mode. A list   of articles with descriptions will then display on your command line.
+3. Select an article from the list.
+4. Depending on what mode you are in, the article will display in your command line or your web browser.
+5. Read, become informed and enlightened, then select another article.
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
