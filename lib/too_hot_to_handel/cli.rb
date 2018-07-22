@@ -41,7 +41,7 @@ class TooHotToHandel::CLI
         list_reviews_in_browser
       when "exit"
         line_width = 110
-        puts ("It has been a pleasure. Please come back again!".center(line_width))
+        puts ("It has been a pleasure. Please come back soon!".center(line_width))
       else
         line_width = 110
         puts ""

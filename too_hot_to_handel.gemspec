@@ -9,15 +9,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jeremy Schuurmans"]
   spec.email         = ["jeremyschuurmans@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{TooHotToHandel is a gem that scrapes the New York Times for the latest classical music news and reviews. It allows you to read articles directly on the command line, or, if you prefer, it will open the article in your web browser. TooHotToHandel is essential for any tech-savvy classical music lover!}
+  spec.homepage      = "https://github.com/JMSchuurmans/too_hot_to_handel"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = "http://mygemserver.com"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -34,4 +33,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "open-uri"
+  spec.add_development_dependency "colorize"
+  spec.add_dependency "launchy"
+
 end
