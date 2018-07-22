@@ -1,31 +1,31 @@
 class TooHotToHandel::CLI
 
   def initialize
-      line_width = 105
-      puts ("------------------------------------------------------".center(line_width))
-      puts ""
-      puts "#######                  #     #                 #######           #     #                              ".blue
-      puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #".blue
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #".blue
-      puts "   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #".blue
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #".blue
-      puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #".blue
-      puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######".blue
-      puts ""
-      puts ("Bringing classical music reviews right to your command line!".center(line_width))
-
-
+    line_width = 110
+    puts ("------------------------------------------------------".center(line_width))
+    puts ""
+    puts "#######                  #     #                 #######           #     #                              ".blue
+    puts "   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #".blue
+    puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #".blue
+    puts "   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #".blue
+    puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #".blue
+    puts "   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #".blue
+    puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######".blue
+    puts ""
+    puts ("Bringing classical music reviews right to your command line!".center(line_width))
   end
 
   def call
     user_input = ""
 
     while user_input != "exit"
-      line_width = 105
+      line_width = 110
       puts ""
-      puts ("To view the latest classical music reviews in your command line, type 'show me'.".center(line_width))
+      puts ("To view the latest classical music reviews, type 'show me'".center(line_width))
+      puts ("then type the number of the review you would like to read.".center(line_width))
       puts ""
-      puts ("To enable browser mode and view the reviews in your web browser, type 'show me on the web'.".center(line_width))
+      puts ("To enable browser mode and view the reviews in your web browser, type 'show me on the web'".center(line_width))
+      puts ("then type the number of the review you would like to open.".center(line_width))
       puts ""
       puts ("To quit at any time, type 'exit'.".center(line_width))
       puts ""
@@ -40,10 +40,12 @@ class TooHotToHandel::CLI
       when "show me on the web"
         list_reviews_in_browser
       when "exit"
-        puts "It has been a pleasure. Please come back again!"
+        line_width = 110
+        puts ("It has been a pleasure. Please come back again!".center(line_width))
       else
+        line_width = 110
         puts ""
-        puts "I didn't understand that. Please try again."
+        puts ("I didn't understand that. Please try again.".center(line_width))
       end
     end
   end
@@ -51,7 +53,7 @@ class TooHotToHandel::CLI
   def list_reviews
     TooHotToHandel::Scraper.scrape_classical_reviews
 
-    line_width = 105
+    line_width = 110
     puts ""
     puts ("Select a review you would like to read:".center(line_width))
     puts ""
@@ -71,7 +73,7 @@ class TooHotToHandel::CLI
   def list_reviews_in_browser
     TooHotToHandel::Scraper.scrape_classical_reviews
 
-    line_width = 105
+    line_width = 110
     puts ""
     puts ("Select a review you would like to read:".center(line_width))
     puts ""
@@ -97,11 +99,8 @@ class TooHotToHandel::CLI
     TooHotToHandel::Scraper.scrape_review_content(classical_review)
 
     puts classical_review.content
-    line_width = 105
+    line_width = 110
     puts ("------------------------------------------------------".center(line_width))
-
-
-    end
   end
 
   def view_content_in_browser
@@ -113,3 +112,4 @@ class TooHotToHandel::CLI
     TooHotToHandel::Scraper.scrape_review_content(classical_review)
     Launchy.open("#{classical_review.url}")
   end
+end
