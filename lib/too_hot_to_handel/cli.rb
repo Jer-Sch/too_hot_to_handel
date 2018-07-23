@@ -16,6 +16,7 @@ class TooHotToHandel::CLI
   end
 
   def call
+
     user_input = ""
 
     while user_input != "exit"
@@ -51,14 +52,8 @@ class TooHotToHandel::CLI
   end
 
   def list_reviews
-    TooHotToHandel::Scraper.scrape_classical_reviews
 
-    line_width = 110
-    puts ""
-    puts ("Select a review you would like to read:".center(line_width))
-    puts ""
-
-    reviews = TooHotToHandel::ClassicalReview.all
+    prepare_reviews
 
     reviews.each.with_index(1) do |review, index|
       puts "#{index} - #{review.title.blue}"
@@ -67,18 +62,12 @@ class TooHotToHandel::CLI
       puts ""
     end
     view_content
-    TooHotToHandel::ClassicalReview.destroy_all
+    # TooHotToHandel::ClassicalReview.destroy_all
   end
 
   def list_reviews_in_browser
-    TooHotToHandel::Scraper.scrape_classical_reviews
 
-    line_width = 110
-    puts ""
-    puts ("Select a review you would like to read:".center(line_width))
-    puts ""
-
-    reviews = TooHotToHandel::ClassicalReview.all
+    prepare_reviews
 
     reviews.each.with_index(1) do |review, index|
       puts "#{index} - #{review.title.red}"
@@ -87,16 +76,18 @@ class TooHotToHandel::CLI
       puts ""
     end
     view_content_in_browser
-    TooHotToHandel::ClassicalReview.destroy_all
+    # TooHotToHandel::ClassicalReview.destroy_all
   end
 
   def view_content
+
     input = gets.strip
     index = input.to_i-1
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
 
-    TooHotToHandel::Scraper.scrape_review_content(classical_review)
+
+    TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.content
 
     puts classical_review.content
     line_width = 110
@@ -109,7 +100,19 @@ class TooHotToHandel::CLI
     index = input.to_i-1
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
-    TooHotToHandel::Scraper.scrape_review_content(classical_review)
+    TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.url
     Launchy.open("#{classical_review.url}")
+  end
+
+  def prepare_reviews
+
+    TooHotToHandel::Scraper.scrape_classical_reviews if TooHotToHandel::ClassicalReview.all.count == 0
+
+    line_width = 110
+    puts ""
+    puts ("Select a review you would like to read:".center(line_width))
+    puts ""
+
+    reviews = TooHotToHandel::ClassicalReview.all
   end
 end
