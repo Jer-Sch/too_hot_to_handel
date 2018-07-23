@@ -16,7 +16,6 @@ class TooHotToHandel::CLI
   end
 
   def call
-
     user_input = ""
 
     while user_input != "exit"
@@ -55,6 +54,8 @@ class TooHotToHandel::CLI
 
     prepare_reviews
 
+    reviews = TooHotToHandel::ClassicalReview.all
+
     reviews.each.with_index(1) do |review, index|
       puts "#{index} - #{review.title.blue}"
       puts ""
@@ -69,6 +70,8 @@ class TooHotToHandel::CLI
 
     prepare_reviews
 
+    reviews = TooHotToHandel::ClassicalReview.all
+
     reviews.each.with_index(1) do |review, index|
       puts "#{index} - #{review.title.red}"
       puts ""
@@ -80,7 +83,6 @@ class TooHotToHandel::CLI
   end
 
   def view_content
-
     input = gets.strip
     index = input.to_i-1
 
@@ -100,7 +102,7 @@ class TooHotToHandel::CLI
     index = input.to_i-1
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
-    TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.url
+    TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.content
     Launchy.open("#{classical_review.url}")
   end
 
@@ -112,7 +114,5 @@ class TooHotToHandel::CLI
     puts ""
     puts ("Select a review you would like to read:".center(line_width))
     puts ""
-
-    reviews = TooHotToHandel::ClassicalReview.all
   end
 end
