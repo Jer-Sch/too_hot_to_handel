@@ -13,32 +13,28 @@ class TooHotToHandel::CLI
     puts "   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######".blue
     puts ""
     puts ("Bringing classical music reviews right to your command line!".center(line_width))
+    puts ""
+    puts ("Please see the prompts below for usage instructions.".center(line_width))
+    puts ""
+    puts ("To view the latest classical music reviews, type 'show me'".center(line_width))
+    puts ("then type the number of the review you would like to read.".center(line_width))
+    puts ""
+    puts ("To exit, type 'exit'.".center(line_width))
+    puts ""
   end
 
   def call
     user_input = ""
 
     while user_input != "exit"
-      line_width = 110
-      puts ""
-      puts ("To view the latest classical music reviews, type 'show me'".center(line_width))
-      puts ("then type the number of the review you would like to read.".center(line_width))
-      puts ""
-      puts ("To enable browser mode and view the reviews in your web browser, type 'show me on the web'".center(line_width))
-      puts ("then type the number of the review you would like to open.".center(line_width))
-      puts ""
-      puts ("To quit at any time, type 'exit'.".center(line_width))
-      puts ""
-      puts ("Are you ready?".center(line_width))
-      puts ""
 
       user_input = gets.strip.downcase
 
       case user_input
       when "show me"
-        list_reviews
-      when "show me on the web"
-        list_reviews_in_browser
+        list_reviews_for_browser
+      when "main menu"
+        list_reviews_for_browser
       when "exit"
         line_width = 110
         puts ("It has been a pleasure. Please come back soon!".center(line_width))
@@ -63,46 +59,39 @@ class TooHotToHandel::CLI
       puts ""
     end
     view_content
-    # TooHotToHandel::ClassicalReview.destroy_all
   end
 
-  def list_reviews_in_browser
+  def list_reviews_for_browser
 
-    prepare_reviews
+    list_reviews
 
-    reviews = TooHotToHandel::ClassicalReview.all
+    user_prompts
 
-    reviews.each.with_index(1) do |review, index|
-      puts "#{index} - #{review.title.red}"
-      puts ""
-      puts "#{review.description}"
-      puts ""
-    end
     view_content_in_browser
-    # TooHotToHandel::ClassicalReview.destroy_all
   end
 
   def view_content
-    input = gets.strip
-    index = input.to_i-1
+
+    user_input = gets.strip
+    index = user_input.to_i-1
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
-
 
     TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.content
 
     puts classical_review.content
+
     line_width = 110
     puts ("------------------------------------------------------".center(line_width))
   end
 
   def view_content_in_browser
 
-    input = gets.strip
-    index = input.to_i-1
+    user_input = gets.strip
+    index = user_input.to_i-1
 
     classical_review = TooHotToHandel::ClassicalReview.all[index]
-    TooHotToHandel::Scraper.scrape_review_content(classical_review) if !classical_review.content
+
     Launchy.open("#{classical_review.url}")
   end
 
@@ -113,6 +102,17 @@ class TooHotToHandel::CLI
     line_width = 110
     puts ""
     puts ("Select a review you would like to read:".center(line_width))
+    puts ""
+  end
+
+  def user_prompts
+    line_width = 110
+    puts ""
+    puts ("To view this article in your browser, re-enter the article number.".center(line_width))
+    puts ""
+    puts ("To return to the list, type 'main menu'.".center(line_width))
+    puts ""
+    puts ("To exit at any time, type 'exit'.".center(line_width))
     puts ""
   end
 end
