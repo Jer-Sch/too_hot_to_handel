@@ -14,7 +14,7 @@ class TooHotToHandel::CLI
     puts ""
     puts ("Bringing classical music reviews right to your command line!".center(line_width))
     puts ""
-    puts ("Please see the prompts below for usage instructions.".center(line_width))
+    puts ("To begin, type 'menu'".center(line_width))
     puts ""
     puts ("To view the latest classical music reviews, type 'show me'".center(line_width))
     puts ("then type the number of the review you would like to read.".center(line_width))
@@ -24,6 +24,7 @@ class TooHotToHandel::CLI
   end
 
   def call
+
     user_input = ""
 
     while user_input != "exit"
@@ -31,9 +32,9 @@ class TooHotToHandel::CLI
       user_input = gets.strip.downcase
 
       case user_input
-      when "show me"
+      when "menu"
         list_reviews_for_browser
-      when "main menu"
+      when "1".."10"
         list_reviews_for_browser
       when "exit"
         line_width = 110
@@ -55,7 +56,7 @@ class TooHotToHandel::CLI
     reviews.each.with_index(1) do |review, index|
       puts "#{index} - #{review.title.blue}"
       puts ""
-      puts "#{review.description}"
+      puts "    #{review.description}"
       puts ""
     end
     view_content
@@ -68,6 +69,7 @@ class TooHotToHandel::CLI
     user_prompts
 
     view_content_in_browser
+
   end
 
   def view_content
@@ -86,6 +88,9 @@ class TooHotToHandel::CLI
   end
 
   def view_content_in_browser
+    line_width = 110
+    puts ""
+    puts ("To view this article in your browser, re-enter the article number.".center(line_width))
 
     user_input = gets.strip
     index = user_input.to_i-1
@@ -101,18 +106,14 @@ class TooHotToHandel::CLI
 
     line_width = 110
     puts ""
-    puts ("Select a review you would like to read:".center(line_width))
+    puts ("Select the review you would like to read by typing the corresponding number, 1 to 10:".red.center(line_width))
     puts ""
   end
 
   def user_prompts
     line_width = 110
-    puts ""
-    puts ("To view this article in your browser, re-enter the article number.".center(line_width))
-    puts ""
     puts ("To return to the list, type 'main menu'.".center(line_width))
     puts ""
     puts ("To exit at any time, type 'exit'.".center(line_width))
-    puts ""
   end
 end
