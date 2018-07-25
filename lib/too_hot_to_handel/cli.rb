@@ -1,18 +1,16 @@
 class TooHotToHandel::CLI
 
   def initialize
-    line_width = 110
+    line_width = 74
     puts ""
     puts ""
-    puts ("#######                  #     #                 #######           #     #                              ".yellow.center(line_width))
-    puts ("   #     ####   ####     #     #  ####  #####       #     ####     #     #   ##   #    # #####  ###### #".yellow.center(line_width))
-    puts ("   #    #    # #    #    #     # #    #   #         #    #    #    #     #  #  #  ##   # #    # #      #".yellow.center(line_width))
-    puts ("   #    #    # #    #    ####### #    #   #         #    #    #    ####### #    # # #  # #    # #####  #".yellow.center(line_width))
-    puts ("   #    #    # #    #    #     # #    #   #         #    #    #    #     # ###### #  # # #    # #      #".yellow.center(line_width))
-    puts ("   #    #    # #    #    #     # #    #   #         #    #    #    #     # #    # #   ## #    # #      #".yellow.center(line_width))
-    puts ("   #     ####   ####     #     #  ####    #         #     ####     #     # #    # #    # #####  ###### ######".yellow.center(line_width))
+    puts' ______        ,             ______   ,                              _ '.blue
+    puts'(_) |         /|   |        (_) |    /|   |                  |      | |'.blue
+    puts'    | __   __  |___|  __ _|_    | __  |___|  __,   _  _    __|   _  | |'.blue
+    puts'  _ |/  \_/  \_|   |\/  \_|   _ |/  \_|   |\/  |  / |/ |  /  |  |/  |/ '.blue
+    puts' (_/ \__/ \__/ |   |/\__/ |_/(_/ \__/ |   |/\_/|_/  |  |_/\_/|_/|__/|__/'.blue
     puts ""
-    puts ("Bringing the latest classical music news right to your command line!".center(line_width))
+    puts ("Bringing the latest classical music news straight to your command line!".center(line_width))
     puts ""
     puts ("To begin, type 'menu'".center(line_width))
     puts ""
@@ -22,7 +20,6 @@ class TooHotToHandel::CLI
 
   def call
     user_input = ""
-    line_width = 110
 
     while user_input != "exit"
 
@@ -32,16 +29,17 @@ class TooHotToHandel::CLI
       when "menu"
         main_menu
       when "yes"
-        puts ("Please re-enter the article number.".red.center(line_width))
+        puts "Please re-enter the article number.".blue
         open_content_in_browser
       when "no"
         main_menu
       when "exit"
-        break
-        # puts ("It has been a pleasure. Please come back soon!".red.center(line_width))
+        puts "It has been a pleasure. Please come back soon!".blue
+        puts ""
+        puts ""
       else
         puts ""
-        puts ("I didn't understand that. Please try again.".red.center(line_width))
+        puts "I didn't understand that. Please try again.".blue
       end
     end
   end
@@ -49,11 +47,14 @@ class TooHotToHandel::CLI
   def prepare_articles
     TooHotToHandel::Scraper.scrape_classical_reviews if TooHotToHandel::ClassicalReview.all.count == 0
 
-    line_width = 110
+    line_width = 74
     puts ""
-    puts ("Select the review you would like to read by typing the corresponding number, 1 to 10:".red.center(line_width))
+    puts ("Select the articles you would like to read by typing the corresponding number".blue.center(line_width))
+    line_width = 89
+    puts ("or the name of the article.".blue.center(line_width))
     puts ""
-    puts ("-------------------------//-------------------------".yellow.center(line_width))
+    line_width = 74
+    puts ("-------------------------//-------------------------".center(line_width))
     puts ""
   end
 
@@ -61,9 +62,9 @@ class TooHotToHandel::CLI
     prepare_articles
 
     reviews = TooHotToHandel::ClassicalReview.all
-    line_width = 110
+
     reviews.each.with_index(1) do |review, index|
-      puts "#{index} - #{review.title.yellow}"
+      puts "#{index} - #{review.title.blue}"
       puts ""
       puts "    #{review.description}"
       puts ""
@@ -94,11 +95,11 @@ class TooHotToHandel::CLI
   end
 
   def user_prompts
-    line_width = 110
+    line_width = 74
     puts ""
-    puts ("Would you like to view this article in your web browser? Type 'yes' or 'no'.".red.center(line_width))
+    puts ("Would you like to view this article in your web browser? Type 'yes' or 'no'.".blue.center(line_width))
     puts ""
-    puts ("-------------------------//-------------------------".red.center(line_width))
+    puts ("-------------------------//-------------------------".center(line_width))
     puts ""
   end
 
