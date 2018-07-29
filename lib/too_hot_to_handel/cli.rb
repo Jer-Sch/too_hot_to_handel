@@ -19,7 +19,7 @@ class TooHotToHandel::CLI
   end
 
   def call
-    user_input = ""
+    user_input = gets.strip.downcase
 
     while user_input != "exit"
 
@@ -27,12 +27,12 @@ class TooHotToHandel::CLI
 
       case user_input
       when "menu"
-        main_menu
+        list_articles
       when "yes"
-        puts "Please re-enter the article number.".blue
+        puts "Please enter the article number.".blue
         open_content_in_browser
       when "no"
-        main_menu
+        list_articles
       when "exit"
         puts "It has been a pleasure. Please come back soon!".blue
         puts ""
@@ -70,6 +70,7 @@ class TooHotToHandel::CLI
       puts ""
     end
     view_content
+    user_prompts
   end
 
   def view_content
@@ -91,7 +92,7 @@ class TooHotToHandel::CLI
 
     Launchy.open("#{classical_review.url}")
 
-    main_menu
+    list_articles
   end
 
   def user_prompts
@@ -101,10 +102,5 @@ class TooHotToHandel::CLI
     puts ""
     puts ("-------------------------//-------------------------".center(line_width))
     puts ""
-  end
-
-  def main_menu
-    list_articles
-    user_prompts
   end
 end
