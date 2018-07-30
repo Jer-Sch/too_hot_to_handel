@@ -19,7 +19,7 @@ class TooHotToHandel::CLI
   end
 
   def call
-    user_input = gets.strip.downcase
+    user_input = []
 
     while user_input != "exit"
 
