@@ -8,7 +8,7 @@ class TooHotToHandel::Scraper
     doc.css(".css-1cp3ece").each do |review|
       title = review.css(".css-p4c7a9").text
       description = review.css(".css-1up1n27").text
-      url = "https://nytimes.com" + review.css(".css-1xc9qte a").attr("href")
+      url = "https://www.nytimes.com" + review.css(".story-link a").attr("href")
       TooHotToHandel::ClassicalReview.new(title, url, description)
     end
   end
