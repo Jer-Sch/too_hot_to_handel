@@ -1,12 +1,12 @@
 class TooHotToHandel::ClassicalReview
-  attr_accessor :title, :url, :content, :description
+  attr_accessor :title, :blurb, :url, :content
 
   @@all = []
 
-  def initialize(title, url, description)
+  def initialize(title, blurb, url)
     @title = title
+    @blurb = blurb
     @url = url
-    @description = description
     @@all << self
   end
 
