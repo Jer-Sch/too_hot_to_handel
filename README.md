@@ -1,6 +1,6 @@
 # TooHotToHandel
 
-TooHotToHandel is a gem that scrapes the New York Times for the latest classical music news and reviews. It allows you to read articles directly on the command line, or, if you prefer, it will open the article in your web browser. TooHotToHandel is essential for any tech-savvy classical music lover!
+TooHotToHandel is a gem that scrapes gramophone.co.uk for the latest classical music news and reviews. It allows you to read articles directly on the command line. TooHotToHandel is essential for any tech-savvy classical music lover!
 
 ## Installation
 
