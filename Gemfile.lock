@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    too_hot_to_handel (0.2.0)
+    too_hot_to_handel (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -29,4 +29,4 @@ DEPENDENCIES
   too_hot_to_handel!
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
