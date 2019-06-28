@@ -6,7 +6,6 @@ require "too_hot_to_handel/version"
 Gem::Specification.new do |spec|
   spec.name          = "too_hot_to_handel"
   spec.version       = TooHotToHandel::VERSION
-  spec.executables << "handel"
   spec.authors       = ["Jeremy Schuurmans"]
   spec.email         = ["schuurm@ns.codes"]
 
