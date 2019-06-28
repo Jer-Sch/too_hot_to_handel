@@ -24,6 +24,7 @@ Or install it yourself as:
 2. Type menu. A list of articles with descriptions will then display on your command line.
 3. Select an article from the list by typing in the article number.
 4. Read, become informed and enlightened, then select another article.
+5. To exit the program, type 'exit'.
 
 
 ## Contributing
