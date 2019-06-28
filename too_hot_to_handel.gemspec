@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "too_hot_to_handel"
   spec.version       = TooHotToHandel::VERSION
   spec.authors       = ["Jeremy Schuurmans"]
-  spec.email         = ["jeremyschuurmans@gmail.com"]
+  spec.email         = ["schuurm@ns.codes"]
 
-  spec.summary       = %q{TooHotToHandel is a gem that scrapes the New York Times for the latest classical music news and reviews. It allows you to read articles directly on the command line, or, if you prefer, it will open the article in your web browser. TooHotToHandel is essential for any tech-savvy classical music lover!}
-  spec.homepage      = "https://github.com/JMSchuurmans/too_hot_to_handel"
+  spec.summary       = %q{TooHotToHandel is a gem that scrapes Gramophone.co.uk for the latest classical music news and reviews. It allows you to read articles directly on the command line. TooHotToHandel is essential for any tech-savvy classical music lover!}
+  spec.homepage      = "https://github.com/palledorous/too_hot_to_handel"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -36,6 +36,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "colorize"
   spec.add_development_dependency "nokogiri", ">= 1.8.2"
-  spec.add_dependency "launchy"
-
 end

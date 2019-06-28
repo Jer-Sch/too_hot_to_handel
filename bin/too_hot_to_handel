@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/too_hot_to_handel"
+require_relative "../lib/too_hot_to_handel.rb"
 
 TooHotToHandel::CLI.new.call

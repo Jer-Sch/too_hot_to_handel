@@ -21,10 +21,9 @@ Or install it yourself as:
 ## Usage
 
 1. Run ./bin/too_hot_to_handel
-2. Follow the prompts to select command line mode, or browser mode. A list   of articles with descriptions will then display on your command line.
-3. Select an article from the list.
-4. Depending on what mode you are in, the article will display in your command line or your web browser.
-5. Read, become informed and enlightened, then select another article.
+2. Type menu. A list of articles with descriptions will then display on your command line.
+3. Select an article from the list by typing in the article number.
+4. Read, become informed and enlightened, then select another article.
 
 
 ## Contributing
